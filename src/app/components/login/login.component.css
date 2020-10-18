@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../../../assets/bg-products.jpg) no-repeat;
+    background-size: cover;
+}
+
+.login-box {
+    background: #fff;
+    padding: 5vh;
+    border-radius: 10px;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    outline: none;
+}
