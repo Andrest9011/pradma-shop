@@ -1,0 +1,26 @@
+  .main {
+      background-color: aliceblue !important;
+  }
+  
+  .color {
+      color: #5bc0de;
+  }
+  
+  .search {
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background: transparent;
+      outline: none;
+  }
+  
+  #sidebar-container {
+      min-height: 100vh;
+  }
+  
+  #sidebar-container {
+      padding: 1rem 1.25rem;
+  }
+  
+  #sidebar-container .menu {
+      width: 18rem;
+  }

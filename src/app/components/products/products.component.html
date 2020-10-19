@@ -1,1 +1,45 @@
-<p>products works!</p>
+<div class="d-flex main">
+    <div class="bg-info">
+        <div class="logo">
+            <h4 class="text-light text-center">ECO</h4>
+        </div>
+        <div class="menu" id="sidebar-container">
+            <a href="" class="d-block text-light p-3"><i class="fas fa-shopping-cart lead"></i></a>
+            <a href="" class="d-block text-light p-3"><i class="far fa-edit lead"></i></a>
+            <a href="" class="d-block text-light p-3"><i class="far fa-calendar-plus lead"></i></a>
+            <a href="" class="d-block text-light p-3"><i class="fas fa-money-bill lead"></i></a>
+            <a href="" class="d-block text-light p-3"><i class="fas fa-table lead"></i></a>
+        </div>
+    </div>
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-6">
+                <h1>Productos <a href=""><i class="fas fa-plus-circle color"></i></a> </h1>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-10">
+                        <input class="form-inline ml-auto my-3 search" type="search" placeholder="Busca tu producto">
+                    </div>
+                    <div class="col-2">
+                        <a href=""><i class="fas fa-search my-4 text-info"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-columns">
+
+            <div class="card" *ngFor="let product of products">
+                <img [src]="product.url_image" onerror="this.src = '../assets/img/noimage.png'" class="card-img-top img-fluid">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{product.name}}</h5>
+                    <p class="card-text text-center">Código: {{product.code}}</p>
+                    <p class="text-center">Lote: </p>
+                    <button class="btn btn-info m-2">Editar</button>
+                    <button class="btn btn-danger m-2">Borrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
