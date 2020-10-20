@@ -31,13 +31,15 @@
         <div class="card-columns">
 
             <div class="card" *ngFor="let product of products">
-                <img [src]="product.url_image" onerror="this.src = '../assets/img/noimage.png'" class="card-img-top img-fluid">
+                <img [src]="product.url_image" onerror="this.src = '../assets/img/noimage.png'" class="card-img-top img-fluid img-container p-2 mx-auto d-block">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{product.name}}</h5>
                     <p class="card-text text-center">Código: {{product.code}}</p>
                     <p class="text-center">Lote: </p>
-                    <button class="btn btn-info m-2">Editar</button>
-                    <button class="btn btn-danger m-2">Borrar</button>
+                    <div class="buttons">
+                        <button class="btn btn-info m-2">Editar</button>
+                        <button class="btn btn-danger m-2">Borrar</button>
+                    </div>
                 </div>
             </div>
         </div>

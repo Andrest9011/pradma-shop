@@ -2,6 +2,16 @@
       background-color: aliceblue !important;
   }
   
+  .card {
+      width: 300px;
+      height: 390px;
+  }
+  
+  .img-container {
+      width: 140px;
+      height: 140px;
+  }
+  
   .color {
       color: #5bc0de;
   }
@@ -23,4 +33,9 @@
   
   #sidebar-container .menu {
       width: 18rem;
+  }
+  
+  .buttons {
+      display: flex;
+      justify-content: center;
   }
