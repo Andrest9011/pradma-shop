@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
@@ -8,15 +9,15 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   form: FormGroup;
 
-  constructor(private builder: FormBuilder, private router: Router) { 
-    this.createForm();
-  }
-
-  ngOnInit(): void {
+  constructor( builder: FormBuilder, private router: Router, private data: DataService) { 
+    this.form = builder.group({
+      email: ['diego.suarez@gmail.com', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password: ['diego', Validators.required]
+    });
   }
 
   get emailInvalid (){
@@ -27,21 +28,16 @@ export class LoginComponent implements OnInit {
     return this.form.get('password').invalid && this.form.get('password').touched;
   }
 
-  createForm () {
-    this.form = this.builder.group({
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ['', Validators.required]
-    });
-  }
-
   login(){
-    console.log(this.form);
     
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach (control => control.markAllAsTouched());
     };
 
-    this.router.navigate(['/products']);
+    this.data.login(this.form.get('email').value, this.form.get('password').value).then(() => {
+      this.router.navigate(['/products']);
+    });
+
 
   }
 
