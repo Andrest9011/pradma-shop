@@ -64,16 +64,16 @@ export class DataService {
     })
   }
 
-  createProduct(code: number, name: string, urlImage: string, value: number, tax: []){
+  createProduct(code: number, name: string, urlImage: string, value: number, taxesSelected: string[]){
     return new Promise ((resolve, reject) => {
-      this.http.post(`${this.url}/product`, {code, name, image: urlImage, value, tax},
+      this.http.post(`${this.url}/product`, {code, name, image: urlImage, value, taxesSelected},
       {headers: new HttpHeaders({
         'Authorization': this.backendToken
       })}).toPromise().then(created => {
         console.log(created);
         resolve();
       }).catch((err) => {
-        console.error(err.error.message);
+        console.error(err.error);
         reject(err);
       })
     })

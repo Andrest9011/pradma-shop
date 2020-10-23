@@ -33,7 +33,7 @@
                 <div class="card-columns">
                     <div class="card-container">
 
-                        <div class="card" *ngFor="let product of products">
+                        <div class="card" *ngFor="let product of products | paginate: {itemsPerPage: 4, currentPage: pageActual}">
                             <img [src]="product.url_image" onerror="this.src = '../assets/img/noimage.png'" class="card-img-top img-fluid img-container p-2 mx-auto d-block">
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{product.name}}</h5>
@@ -47,6 +47,7 @@
                         </div>
                     </div>
                 </div>
+                <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
             </div>
             <div class="col-4">
 
@@ -71,10 +72,15 @@
                             <label>Imagen</label>
                             <input type="text" class="form-control" id="img" formControlName="img">
                         </div>
-                        <div *ngFor="let taxe of taxesOptions" class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="iva">
-                            <label class="form-check-label" for="iva">{{taxe.name}}</label>
+
+                        <div *ngFor="let tax of taxesFormArray.controls; let i = index" class="form-group form-check">
+                            <label class="form-check-label" formArrayName="taxes">
+                                <input type="checkbox" class="form-check-input" [formControlName]="i">
+                                {{taxesOptions[i].name}}
+                              </label>
                         </div>
+
+
                         <button type="submit" class="btn btn-warning btn-block" (click)="createdProduct()">Crear</button>
                     </div>
 
